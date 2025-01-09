@@ -3,6 +3,14 @@
 
 import { useState } from "react";
 import axios from "axios";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -75,40 +83,40 @@ export default function Home() {
         {error && <div style={{ color: "red" }}>Error: {error}</div>}
 
         {results.length > 0 && (
-          <div style={{ width: "90%", overflowX: "auto" }}>
-            <h2>Results</h2>
-            <table style={{ borderCollapse: "collapse", width: "100%" }}>
-              <thead>
-                <tr>
-                  <th style={thStyle}>_id</th>
-                  <th style={thStyle}>client_id</th>
-                  <th style={thStyle}>first_name</th>
-                  <th style={thStyle}>last_name</th>
-                  <th style={thStyle}>email</th>
-                  <th style={thStyle}>gender</th>
-                  <th style={thStyle}>dob</th>
-                  <th style={thStyle}>nationality</th>
-                  <th style={thStyle}>current_status</th>
-                  <th style={thStyle}>arrival_date</th>
-                </tr>
-              </thead>
-              <tbody>
+          <div className="w-[90%] overflow-x-auto bg-white rounded-lg p-4">
+            <h2 className="mb-4">Results</h2>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>ID</TableHead>
+                  <TableHead>Client ID</TableHead>
+                  <TableHead>First Name</TableHead>
+                  <TableHead>Last Name</TableHead>
+                  <TableHead>Email</TableHead>
+                  <TableHead>Gender</TableHead>
+                  <TableHead>DOB</TableHead>
+                  <TableHead>Nationality</TableHead>
+                  <TableHead>Current Status</TableHead>
+                  <TableHead>Arrival Date</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {results.map((item, idx) => (
-                  <tr key={idx}>
-                    <td style={tdStyle}>{item._id}</td>
-                    <td style={tdStyle}>{item.client_id}</td>
-                    <td style={tdStyle}>{item.first_name}</td>
-                    <td style={tdStyle}>{item.last_name}</td>
-                    <td style={tdStyle}>{item.email}</td>
-                    <td style={tdStyle}>{item.gender}</td>
-                    <td style={tdStyle}>{item.dob}</td>
-                    <td style={tdStyle}>{item.nationality}</td>
-                    <td style={tdStyle}>{item.current_status}</td>
-                    <td style={tdStyle}>{item.arrival_date}</td>
-                  </tr>
+                  <TableRow key={idx}>
+                    <TableCell>{item._id}</TableCell>
+                    <TableCell>{item.client_id}</TableCell>
+                    <TableCell>{item.first_name}</TableCell>
+                    <TableCell>{item.last_name}</TableCell>
+                    <TableCell>{item.email}</TableCell>
+                    <TableCell>{item.gender}</TableCell>
+                    <TableCell>{item.dob}</TableCell>
+                    <TableCell>{item.nationality}</TableCell>
+                    <TableCell>{item.current_status}</TableCell>
+                    <TableCell>{item.arrival_date}</TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
         )}
       </main>
@@ -124,16 +132,3 @@ export default function Home() {
     </div>
   );
 }
-
-// Some simple styling for table cells
-const thStyle: React.CSSProperties = {
-  border: "1px solid #ccc",
-  padding: "8px",
-  backgroundColor: "#333",
-  color: "#fff",
-};
-
-const tdStyle: React.CSSProperties = {
-  border: "1px solid #ccc",
-  padding: "8px",
-};
