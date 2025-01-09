@@ -79,29 +79,32 @@ export default function Home() {
             Send
           </button>
         </div>
+        <div>
+          Sample Query: Find all clients who are from China and younger than 30
+        </div>
 
         {error && <div style={{ color: "red" }}>Error: {error}</div>}
 
-        {results.length > 0 && (
-          <div className="w-[90%] overflow-x-auto bg-white rounded-lg p-4">
-            <h2 className="mb-4">Results</h2>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>ID</TableHead>
-                  <TableHead>Client ID</TableHead>
-                  <TableHead>First Name</TableHead>
-                  <TableHead>Last Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Gender</TableHead>
-                  <TableHead>DOB</TableHead>
-                  <TableHead>Nationality</TableHead>
-                  <TableHead>Current Status</TableHead>
-                  <TableHead>Arrival Date</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {results.map((item, idx) => (
+        <div className="w-[90%] overflow-x-auto bg-white rounded-lg p-4">
+          <h2 className="mb-4">Results</h2>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>ID</TableHead>
+                <TableHead>Client ID</TableHead>
+                <TableHead>First Name</TableHead>
+                <TableHead>Last Name</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Gender</TableHead>
+                <TableHead>DOB</TableHead>
+                <TableHead>Nationality</TableHead>
+                <TableHead>Current Status</TableHead>
+                <TableHead>Arrival Date</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {results.length > 0 ? (
+                results.map((item, idx) => (
                   <TableRow key={idx}>
                     <TableCell>{item._id}</TableCell>
                     <TableCell>{item.client_id}</TableCell>
@@ -114,11 +117,17 @@ export default function Home() {
                     <TableCell>{item.current_status}</TableCell>
                     <TableCell>{item.arrival_date}</TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        )}
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={10} className="text-center">
+                    No results found
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </main>
       <footer
         style={{
