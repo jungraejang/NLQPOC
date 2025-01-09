@@ -84,7 +84,10 @@ export default function Home() {
           </button>
         </div>
         <div>
-          Sample Query: Find all clients who are from China and younger than 30
+          Sample Query:{" "}
+          <span className="text-black font-bold">
+            Find all clients who are from China and younger than 30
+          </span>
         </div>
 
         {error && <div style={{ color: "red" }}>Error: {error}</div>}
