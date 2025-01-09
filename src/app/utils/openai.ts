@@ -45,6 +45,15 @@ IMPORTANT:
 EXAMPLES:
 - If user says "Find clients with gender female", output:
   {"gender":"Female"}
+  - If user says "Find all Chinese and Swedish clients", output:
+   {
+  "nationality": {
+    "$in": [
+      "China",
+      "Sweden"
+    ]
+  }
+}
 - If user says "Find clients born before January 1, 1990", output:
   {
     "$expr": {
