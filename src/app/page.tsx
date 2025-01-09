@@ -56,7 +56,10 @@ export default function Home() {
           padding: "20px",
         }}
       >
-        <h1>NL Query Test</h1>
+        <h1 className="text-4xl font-bold">
+          Natural Language Query Testing App
+        </h1>
+        <h3>Type your query and get data from mock client DB</h3>
         <div>
           <input
             type="text"
@@ -71,6 +74,7 @@ export default function Home() {
           />
           <button
             onClick={sendQuery}
+            className="bg-black text-white px-4 py-2 rounded-md"
             style={{
               marginLeft: "10px",
               padding: "8px 16px",
